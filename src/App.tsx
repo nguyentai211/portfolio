@@ -18,7 +18,10 @@ import {
   User,
   Briefcase,
   GraduationCap,
-  Folder
+  Folder,
+  Sun,
+  Moon,
+  Languages
 } from 'lucide-react';
 import './App.css';
 
@@ -26,6 +29,160 @@ const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [language, setLanguage] = useState('en');
+
+  // Initialize theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const savedLanguage = localStorage.getItem('language');
+    
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+    
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  const toggleLanguage = () => {
+    const newLanguage = language === 'en' ? 'vi' : 'en';
+    setLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+  };
+
+  // Language content
+  const content = {
+    en: {
+      name: 'Nguyễn Công Khánh Tài',
+      title: 'Backend Developer & Software Engineer',
+      subtitle: 'Passionate about building scalable backend systems, microservices architecture, and delivering high-quality software solutions.',
+      nav: {
+        home: 'Home',
+        about: 'About',
+        experience: 'Experience',
+        projects: 'Projects',
+        contact: 'Contact'
+      },
+      buttons: {
+        getInTouch: 'Get In Touch',
+        downloadCV: 'Download CV'
+      },
+      about: {
+        title: 'About Me',
+        subtitle: "I'm a passionate Backend Developer with experience in building scalable systems and deploying healthcare solutions.",
+        education: 'Education',
+        location: 'Location'
+      },
+      experience: {
+        title: 'Experience',
+        subtitle: 'My professional journey in software development'
+      },
+      projects: {
+        title: 'Featured Projects',
+        subtitle: 'Some of my recent work and personal projects',
+        keyFeatures: 'Key Features:',
+        buttons: {
+          code: 'Code',
+          demo: 'Demo'
+        }
+      },
+      contact: {
+        title: 'Get In Touch',
+        subtitle: "Let's discuss opportunities and collaborate on exciting projects",
+        info: 'Contact Information',
+        form: {
+          title: 'Send a Message',
+          name: 'Name',
+          email: 'Email',
+          message: 'Message',
+          send: 'Send Message',
+          placeholders: {
+            name: 'Your name',
+            email: 'your.email@example.com',
+            message: 'Your message...'
+          }
+        }
+      },
+      footer: {
+        description: 'Backend Developer passionate about creating efficient and scalable solutions',
+        rights: 'All rights reserved.'
+      }
+    },
+    vi: {
+      name: 'Nguyễn Công Khánh Tài',
+      title: 'Lập Trình Viên Backend & Kỹ Sư Phần Mềm',
+      subtitle: 'Đam mê xây dựng hệ thống backend có thể mở rộng, kiến trúc microservices và cung cấp các giải pháp phần mềm chất lượng cao.',
+      nav: {
+        home: 'Trang Chủ',
+        about: 'Giới Thiệu',
+        experience: 'Kinh Nghiệm',
+        projects: 'Dự Án',
+        contact: 'Liên Hệ'
+      },
+      buttons: {
+        getInTouch: 'Liên Hệ Ngay',
+        downloadCV: 'Tải CV'
+      },
+      about: {
+        title: 'Giới Thiệu',
+        subtitle: 'Tôi là một Lập trình viên Backend đam mê với kinh nghiệm xây dựng hệ thống có thể mở rộng và triển khai các giải pháp y tế.',
+        education: 'Học Vấn',
+        location: 'Địa Điểm'
+      },
+      experience: {
+        title: 'Kinh Nghiệm',
+        subtitle: 'Hành trình nghề nghiệp của tôi trong phát triển phần mềm'
+      },
+      projects: {
+        title: 'Dự Án Nổi Bật',
+        subtitle: 'Một số công việc gần đây và dự án cá nhân của tôi',
+        keyFeatures: 'Tính Năng Chính:',
+        buttons: {
+          code: 'Mã Nguồn',
+          demo: 'Demo'
+        }
+      },
+      contact: {
+        title: 'Liên Hệ',
+        subtitle: 'Hãy thảo luận về cơ hội và hợp tác trong các dự án thú vị',
+        info: 'Thông Tin Liên Hệ',
+        form: {
+          title: 'Gửi Tin Nhắn',
+          name: 'Tên',
+          email: 'Email',
+          message: 'Tin Nhắn',
+          send: 'Gửi Tin Nhắn',
+          placeholders: {
+            name: 'Tên của bạn',
+            email: 'email.cua.ban@example.com',
+            message: 'Tin nhắn của bạn...'
+          }
+        }
+      },
+      footer: {
+        description: 'Lập trình viên Backend đam mê tạo ra các giải pháp hiệu quả và có thể mở rộng',
+        rights: 'Bảo lưu mọi quyền.'
+      }
+    }
+  };
+
+  const t = content[language as keyof typeof content];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -162,11 +319,11 @@ const App = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {[
-                { id: 'home', label: 'Home', icon: User },
-                { id: 'about', label: 'About', icon: User },
-                { id: 'experience', label: 'Experience', icon: Briefcase },
-                { id: 'projects', label: 'Projects', icon: Folder },
-                { id: 'contact', label: 'Contact', icon: Mail }
+                { id: 'home', label: t.nav.home, icon: User },
+                { id: 'about', label: t.nav.about, icon: User },
+                { id: 'experience', label: t.nav.experience, icon: Briefcase },
+                { id: 'projects', label: t.nav.projects, icon: Folder },
+                { id: 'contact', label: t.nav.contact, icon: Mail }
               ].map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
@@ -183,10 +340,30 @@ const App = () => {
               ))}
             </div>
 
+            {/* Theme and Language toggles */}
+            <div className="hidden md:flex items-center space-x-2 ml-4">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-1 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                title="Switch language"
+              >
+                <Languages size={20} />
+                <span className="text-sm font-medium">{language.toUpperCase()}</span>
+              </button>
+            </div>
+
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 ml-auto"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -195,12 +372,31 @@ const App = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+              {/* Mobile Theme and Language toggles */}
+              <div className="flex items-center justify-center space-x-4 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                >
+                  {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                  <span className="text-sm">{isDarkMode ? 'Light' : 'Dark'}</span>
+                </button>
+                
+                <button
+                  onClick={toggleLanguage}
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                >
+                  <Languages size={20} />
+                  <span className="text-sm">{language === 'en' ? 'Tiếng Việt' : 'English'}</span>
+                </button>
+              </div>
+              
               {[
-                { id: 'home', label: 'Home', icon: User },
-                { id: 'about', label: 'About', icon: User },
-                { id: 'experience', label: 'Experience', icon: Briefcase },
-                { id: 'projects', label: 'Projects', icon: Folder },
-                { id: 'contact', label: 'Contact', icon: Mail }
+                { id: 'home', label: t.nav.home, icon: User },
+                { id: 'about', label: t.nav.about, icon: User },
+                { id: 'experience', label: t.nav.experience, icon: Briefcase },
+                { id: 'projects', label: t.nav.projects, icon: Folder },
+                { id: 'contact', label: t.nav.contact, icon: Mail }
               ].map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
@@ -227,14 +423,14 @@ const App = () => {
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                Nguyễn Công Khánh Tài
+                {t.name}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6">
-              Backend Developer & Software Engineer
+              {t.title}
             </p>
             <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              Passionate about building scalable backend systems, microservices architecture, and delivering high-quality software solutions.
+              {t.subtitle}
             </p>
           </div>
 
@@ -244,15 +440,15 @@ const App = () => {
               className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
             >
               <Mail size={20} />
-              <span>Get In Touch</span>
+              <span>{t.buttons.getInTouch}</span>
             </a>
             <a
-              href="/John_Doe_CV.pdf"
+              href="/Nguyen_Cong_Khanh_Tai_CV.pdf"
               download
               className="flex items-center space-x-2 px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105"
             >
               <Download size={20} />
-              <span>Download CV</span>
+              <span>{t.buttons.downloadCV}</span>
             </a>
           </div>
 
@@ -299,11 +495,11 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                About Me
+                {t.about.title}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              I'm a passionate Backend Developer with experience in building scalable systems and deploying healthcare solutions.
+              {t.about.subtitle}
             </p>
           </div>
 
@@ -312,14 +508,16 @@ const App = () => {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                 <div className="flex items-center mb-4">
                   <GraduationCap className="text-blue-600 mr-3" size={24} />
-                  <h3 className="text-xl font-semibold">Education</h3>
+                  <h3 className="text-xl font-semibold">{t.about.education}</h3>
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">Dai Nam University</h4>
-                  <p className="text-gray-600 dark:text-gray-300">Bachelor of Information Technology</p>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {language === 'en' ? 'Bachelor of Information Technology' : 'Cử nhân Công nghệ Thông tin'}
+                  </p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center mt-1">
                     <Calendar size={16} className="mr-1" />
-                    Graduated Jul 2024
+                    {language === 'en' ? 'Graduated Jul 2024' : 'Tốt nghiệp Tháng 7/2024'}
                   </p>
                 </div>
               </div>
@@ -327,9 +525,11 @@ const App = () => {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                 <div className="flex items-center mb-4">
                   <MapPin className="text-blue-600 mr-3" size={24} />
-                  <h3 className="text-xl font-semibold">Location</h3>
+                  <h3 className="text-xl font-semibold">{t.about.location}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">Vietnam</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {language === 'en' ? 'Vietnam' : 'Việt Nam'}
+                </p>
               </div>
             </div>
 
@@ -337,7 +537,7 @@ const App = () => {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <Code className="text-blue-600 mr-3" size={24} />
-                  Programming Languages
+                  {language === 'en' ? 'Programming Languages' : 'Ngôn Ngữ Lập Trình'}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {skills.languages.map((skill, index) => (
@@ -354,11 +554,13 @@ const App = () => {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <Server className="text-blue-600 mr-3" size={24} />
-                  Frameworks & Tools
+                  {language === 'en' ? 'Frameworks & Tools' : 'Framework & Công Cụ'}
                 </h3>
                 <div className="space-y-3">
                   <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Frameworks</h4>
+                    <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {language === 'en' ? 'Frameworks' : 'Framework'}
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {skills.frameworks.map((skill, index) => (
                         <span
@@ -371,7 +573,9 @@ const App = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Developer Tools</h4>
+                    <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      {language === 'en' ? 'Developer Tools' : 'Công Cụ Phát Triển'}
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {skills.tools.map((skill, index) => (
                         <span
@@ -396,11 +600,11 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Experience
+                {t.experience.title}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              My professional journey in software development
+              {t.experience.subtitle}
             </p>
           </div>
 
@@ -474,11 +678,11 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Featured Projects
+                {t.projects.title}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Some of my recent work and personal projects
+              {t.projects.subtitle}
             </p>
           </div>
 
@@ -506,7 +710,7 @@ const App = () => {
                   </p>
                   
                   <div className="mb-4">
-                    <h4 className="font-semibold text-gray-800 dark:text-white mb-2 text-sm">Key Features:</h4>
+                    <h4 className="font-semibold text-gray-800 dark:text-white mb-2 text-sm">{t.projects.keyFeatures}</h4>
                     <ul className="space-y-1">
                       {project.features.slice(0, 3).map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start text-xs text-gray-600 dark:text-gray-300">
@@ -543,7 +747,7 @@ const App = () => {
                       className="flex items-center space-x-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 text-sm"
                     >
                       <Github size={16} />
-                      <span>Code</span>
+                      <span>{t.projects.buttons.code}</span>
                     </a>
                     {project.demo && (
                       <a
@@ -553,7 +757,7 @@ const App = () => {
                         className="flex items-center space-x-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 text-sm"
                       >
                         <ExternalLink size={16} />
-                        <span>Demo</span>
+                        <span>{t.projects.buttons.demo}</span>
                       </a>
                     )}
                   </div>
@@ -570,17 +774,17 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Get In Touch
+                {t.contact.title}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Let's discuss opportunities and collaborate on exciting projects
+              {t.contact.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">{t.contact.info}</h3>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
@@ -599,7 +803,9 @@ const App = () => {
                 <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <Phone className="text-blue-600" size={24} />
                   <div>
-                    <p className="font-semibold text-gray-800 dark:text-white">Phone</p>
+                    <p className="font-semibold text-gray-800 dark:text-white">
+                      {language === 'en' ? 'Phone' : 'Điện Thoại'}
+                    </p>
                     <a
                       href="tel:+84832597839"
                       className="text-blue-600 dark:text-blue-400 hover:underline"
@@ -627,7 +833,9 @@ const App = () => {
                 <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <Globe className="text-blue-600" size={24} />
                   <div>
-                    <p className="font-semibold text-gray-800 dark:text-white">Portfolio</p>
+                    <p className="font-semibold text-gray-800 dark:text-white">
+                      {language === 'en' ? 'Portfolio' : 'Hồ Sơ'}
+                    </p>
                     <a
                       href="https://tainguyen-profile.is-a.dev"
                       target="_blank"
@@ -642,44 +850,44 @@ const App = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">{t.contact.form.title}</h3>
               <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name
+                    {t.contact.form.name}
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="Your name"
+                    placeholder={t.contact.form.placeholders.name}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
+                    {t.contact.form.email}
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="your.email@example.com"
+                    placeholder={t.contact.form.placeholders.email}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Message
+                    {t.contact.form.message}
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
-                    placeholder="Your message..."
+                    placeholder={t.contact.form.placeholders.message}
                   ></textarea>
                 </div>
 
@@ -687,7 +895,7 @@ const App = () => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
-                  Send Message
+                  {t.contact.form.send}
                 </button>
               </form>
             </div>
@@ -700,10 +908,10 @@ const App = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Nguyễn Công Khánh Tài
+              {t.name}
             </div>
             <p className="text-gray-400 mb-6">
-              Backend Developer passionate about creating efficient and scalable solutions
+              {t.footer.description}
             </p>
             
             <div className="flex justify-center space-x-6 mb-8">
@@ -733,7 +941,7 @@ const App = () => {
             
             <div className="border-t border-gray-800 pt-8">
               <p className="text-gray-400 text-sm">
-                © 2025 Nguyễn Công Khánh Tài. All rights reserved.
+                © 2025 {t.name}. {t.footer.rights}
               </p>
             </div>
           </div>
