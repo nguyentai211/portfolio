@@ -30,10 +30,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {projectsData.map((project, index) => (
             <div
               key={index}
-              className="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden project-image">
+              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -69,7 +68,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     {project.techStack.slice(0, 4).map((tech: string, techIndex: number) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs skill-tag"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
                       >
                         {tech}
                       </span>

@@ -23,8 +23,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 stagger-animation">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover glass-effect">
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
               <div className="flex items-center mb-4">
                 <GraduationCap className="text-blue-600 mr-3" size={24} />
                 <h3 className="text-xl font-semibold">{translations.about.education}</h3>
@@ -41,7 +41,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover glass-effect">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
               <div className="flex items-center mb-4">
                 <MapPin className="text-blue-600 mr-3" size={24} />
                 <h3 className="text-xl font-semibold">{translations.about.location}</h3>
@@ -52,8 +52,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
             </div>
           </div>
 
-          <div className="space-y-6 stagger-animation">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover glass-effect">
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
               <h3 className="text-xl font-semibold mb-4 flex items-center">
                 <Code className="text-blue-600 mr-3" size={24} />
                 {translations.skills.languages}
@@ -62,7 +62,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                 {personalData.skills.languages.map((skill: string, index: number) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium skill-tag"
+                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium"
                   >
                     {skill}
                   </span>
@@ -70,7 +70,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover glass-effect">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg card-hover">
               <h3 className="text-xl font-semibold mb-4 flex items-center">
                 <Server className="text-blue-600 mr-3" size={24} />
                 {translations.skills.frameworks}
@@ -84,7 +84,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                     {personalData.skills.frameworks.map((skill: string, index: number) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium skill-tag"
+                        className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium"
                       >
                         {skill}
                       </span>
@@ -99,7 +99,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                     {personalData.skills.tools.map((skill: string, index: number) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium skill-tag"
+                        className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium"
                       >
                         {skill}
                       </span>

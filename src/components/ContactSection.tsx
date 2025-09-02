@@ -104,7 +104,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.name}
                 </label>
-                <div className="form-input">
                 <input
                   type="text"
                   id="name"
@@ -112,14 +111,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder={translations.contact.form.placeholders.name}
                 />
-                </div>
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.email}
                 </label>
-                <div className="form-input">
                 <input
                   type="email"
                   id="email"
@@ -127,14 +124,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder={translations.contact.form.placeholders.email}
                 />
-                </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.message}
                 </label>
-                <div className="form-input">
                 <textarea
                   id="message"
                   name="message"
@@ -142,7 +137,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
                   placeholder={translations.contact.form.placeholders.message}
                 ></textarea>
-                </div>
               </div>
 
               <button
