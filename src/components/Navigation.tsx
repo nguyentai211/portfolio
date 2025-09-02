@@ -62,7 +62,8 @@ const Navigation: React.FC<NavigationProps> = ({
                 key={id}
                 onClick={() => scrollToSection(id)}
                 className={`flex items-center space-x-1 px-3 py-2 rounded-lg enhanced-hover magnetic whitespace-nowrap ${
-                className={`flex items-center space-x-1 px-3 py-2 rounded-lg enhanced-hover whitespace-nowrap ${
+                c                }
+lassName={`flex items-center space-x-1 px-3 py-2 rounded-lg enhanced-hover whitespace-nowrap ${
                   activeSection === id
                     ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
                     : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
@@ -143,3 +144,8 @@ const Navigation: React.FC<NavigationProps> = ({
 };
 
 export default Navigation;
+    )
+    )
+    }
+  )
+}
