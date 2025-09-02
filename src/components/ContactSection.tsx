@@ -34,12 +34,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             
             <div className="space-y-4">
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Mail className="text-blue-600" size={24} />
+                <Mail className="text-blue-600 float-animation" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">Email</p>
                   <a
                     href={`mailto:${personalData.email}`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-blue-600 dark:text-blue-400 hover:underline enhanced-hover"
                   >
                     {personalData.email}
                   </a>
@@ -47,14 +47,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Phone className="text-blue-600" size={24} />
+                <Phone className="text-blue-600 float-animation" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">
                     {language === 'en' ? 'Phone' : 'Điện Thoại'}
                   </p>
                   <a
                     href={`tel:${personalData.phone}`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-blue-600 dark:text-blue-400 hover:underline enhanced-hover"
                   >
                     {personalData.phone}
                   </a>
@@ -62,14 +62,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Github className="text-blue-600" size={24} />
+                <Github className="text-blue-600 float-animation" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">GitHub</p>
                   <a
                     href={personalData.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-blue-600 dark:text-blue-400 hover:underline enhanced-hover"
                   >
                     {personalData.github.replace('https://', '')}
                   </a>
@@ -77,7 +77,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Globe className="text-blue-600" size={24} />
+                <Globe className="text-blue-600 float-animation" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">
                     {language === 'en' ? 'Portfolio' : 'Hồ Sơ'}
@@ -86,7 +86,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     href={personalData.portfolio}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-blue-600 dark:text-blue-400 hover:underline enhanced-hover"
                   >
                     {personalData.portfolio.replace('https://', '')}
                   </a>
@@ -104,44 +104,50 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.name}
                 </label>
+                <div className="form-input">
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white glass-effect"
                   placeholder={translations.contact.form.placeholders.name}
                 />
+                </div>
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.email}
                 </label>
+                <div className="form-input">
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white glass-effect"
                   placeholder={translations.contact.form.placeholders.email}
                 />
+                </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {translations.contact.form.message}
                 </label>
+                <div className="form-input">
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none glass-effect"
                   placeholder={translations.contact.form.placeholders.message}
                 ></textarea>
+                </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 btn-enhanced magnetic-button liquid-button ripple shadow-lg animated-gradient"
               >
                 {translations.contact.form.send}
               </button>

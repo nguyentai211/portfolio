@@ -11,25 +11,25 @@ const Footer: React.FC<FooterProps> = ({ translations, personalData }) => {
     <footer className="bg-gray-900 text-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
-          <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold mb-4 gradient-text-animated neon-glow">
             {translations.name}
           </div>
           <p className="text-gray-400 mb-6">
             {translations.footer.description}
           </p>
           
-          <div className="flex justify-center space-x-6 mb-8">
+          <div className="flex justify-center space-x-6 mb-8 stagger-animation">
             <a
               href={personalData.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
+              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 enhanced-hover magnetic breathe-animation glass-effect"
             >
               <Github size={24} />
             </a>
             <a
               href={`mailto:${personalData.email}`}
-              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
+              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 enhanced-hover magnetic breathe-animation glass-effect"
             >
               <Mail size={24} />
             </a>
@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = ({ translations, personalData }) => {
               href={personalData.portfolio}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
+              className="p-3 rounded-full bg-gray-800 hover:bg-blue-600 enhanced-hover magnetic breathe-animation glass-effect"
             >
               <Globe size={24} />
             </a>

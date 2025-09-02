@@ -45,12 +45,12 @@ const Navigation: React.FC<NavigationProps> = ({
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'nav-enhanced shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold gradient-text-animated float-animation">
             Tài Nguyễn
           </div>
           
@@ -60,7 +60,7 @@ const Navigation: React.FC<NavigationProps> = ({
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                className={`flex items-center space-x-1 px-3 py-2 rounded-lg enhanced-hover magnetic whitespace-nowrap ${
                   activeSection === id
                     ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
                     : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
@@ -76,7 +76,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div className="hidden lg:flex items-center space-x-2 ml-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 enhanced-hover magnetic rotating-border"
               title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -84,7 +84,7 @@ const Navigation: React.FC<NavigationProps> = ({
             
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-1 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+              className="flex items-center space-x-1 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 enhanced-hover magnetic"
               title="Switch language"
             >
               <Languages size={20} />
@@ -95,7 +95,7 @@ const Navigation: React.FC<NavigationProps> = ({
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 ml-auto"
+            className="lg:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 ml-auto enhanced-hover magnetic"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -103,12 +103,12 @@ const Navigation: React.FC<NavigationProps> = ({
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-700 glass-effect">
             {/* Mobile Theme and Language toggles */}
-            <div className="flex items-center justify-center space-x-4 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-center space-x-4 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700 stagger-animation">
               <button
                 onClick={toggleTheme}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 btn-enhanced magnetic"
               >
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                 <span className="text-sm">{isDarkMode ? 'Light' : 'Dark'}</span>
@@ -116,7 +116,7 @@ const Navigation: React.FC<NavigationProps> = ({
               
               <button
                 onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 btn-enhanced magnetic"
               >
                 <Languages size={20} />
                 <span className="text-sm">{language === 'en' ? 'Tiếng Việt' : 'English'}</span>
@@ -127,7 +127,7 @@ const Navigation: React.FC<NavigationProps> = ({
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="flex items-center space-x-2 w-full px-4 py-3 text-left text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+                className="flex items-center space-x-2 w-full px-4 py-3 text-left text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg enhanced-hover magnetic"
               >
                 <Icon size={20} />
                 <span>{label}</span>
