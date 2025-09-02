@@ -45,98 +45,150 @@ const Navigation: React.FC<NavigationProps> = ({
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'nav-enhanced shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Tài Nguyễn
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-6 xl:space-x-8">
-            {navItems.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={`flex items-center space-x-1 px-3 py-2 rounded-lg btn-enhanced whitespace-nowrap ${
-                  activeSection === id
-                    ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                }`}
-              >
-                <Icon size={16} />
-                <span className="text-sm xl:text-base">{label}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Theme and Language toggles */}
-          <div className="hidden lg:flex items-center space-x-2 ml-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 btn-enhanced"
-              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'nav-enhanced shadow-xl' : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className="text-2xl font-bold">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-float">
+                Tài Nguyễn
+              </span>
+            </div>
             
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center space-x-1 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 btn-enhanced"
-              title="Switch language"
-            >
-              <Languages size={20} />
-              <span className="text-sm font-medium">{language.toUpperCase()}</span>
-            </button>
-          </div>
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex space-x-6 xl:space-x-8">
+              {navItems.map(({ id, label, icon: Icon }, index) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl btn-enhanced whitespace-nowrap relative overflow-hidden group ${
+                    activeSection === id
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600'
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <Icon size={16} className="relative z-10" />
+                  <span className="text-sm xl:text-base relative z-10">{label}</span>
+                  {activeSection !== id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  )}
+                </button>
+              ))}
+            </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 ml-auto btn-enhanced"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-700">
-            {/* Mobile Theme and Language toggles */}
-            <div className="flex items-center justify-center space-x-4 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+            {/* Theme and Language toggles */}
+            <div className="hidden lg:flex items-center space-x-3 ml-6">
               <button
                 onClick={toggleTheme}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 btn-enhanced"
+                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
+                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-                <span className="text-sm">{isDarkMode ? 'Light' : 'Dark'}</span>
+                {isDarkMode ? (
+                  <Sun size={20} className="group-hover:animate-spin" />
+                ) : (
+                  <Moon size={20} className="group-hover:rotate-12" />
+                )}
               </button>
               
               <button
                 onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 btn-enhanced"
+                className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white btn-enhanced group"
+                title="Switch language"
               >
-                <Languages size={20} />
-                <span className="text-sm">{language === 'en' ? 'Tiếng Việt' : 'English'}</span>
+                <Languages size={20} className="group-hover:rotate-12" />
+                <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
             </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white btn-enhanced relative z-50"
+            >
+              <div className="relative w-6 h-6">
+                <Menu 
+                  size={24} 
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'
+                  }`} 
+                />
+                <X 
+                  size={24} 
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
+                  }`} 
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="mobile-menu-overlay lg:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Navigation Menu */}
+      <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
+        <div className="p-6 pt-20">
+          {/* Mobile Theme and Language toggles */}
+          <div className="flex items-center justify-center space-x-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg btn-enhanced group"
+            >
+              {isDarkMode ? (
+                <Sun size={20} className="group-hover:animate-spin" />
+              ) : (
+                <Moon size={20} className="group-hover:rotate-12" />
+              )}
+              <span className="text-sm font-medium">
+                {isDarkMode ? 'Light' : 'Dark'}
+              </span>
+            </button>
             
-            {navItems.map(({ id, label, icon: Icon }) => (
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg btn-enhanced group"
+            >
+              <Languages size={20} className="group-hover:rotate-12" />
+              <span className="text-sm font-medium">
+                {language === 'en' ? 'Tiếng Việt' : 'English'}
+              </span>
+            </button>
+          </div>
+          
+          {/* Mobile Navigation Items */}
+          <div className="space-y-3">
+            {navItems.map(({ id, label, icon: Icon }, index) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="flex items-center space-x-2 w-full px-4 py-3 text-left text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg btn-enhanced"
+                className={`flex items-center space-x-4 w-full px-6 py-4 text-left rounded-xl btn-enhanced group relative overflow-hidden ${
+                  activeSection === id
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white'
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Icon size={20} />
-                <span>{label}</span>
+                <Icon size={24} className="relative z-10" />
+                <span className="text-lg font-medium relative z-10">{label}</span>
+                {activeSection !== id && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                )}
               </button>
             ))}
           </div>
-        )}
+        </div>
       </div>
-    </nav>
+    </>
   );
 };
 
