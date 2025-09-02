@@ -34,7 +34,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             
             <div className="space-y-4">
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Mail className="text-blue-600 float-animation" size={24} />
+                <Mail className="text-blue-600" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">Email</p>
                   <a
@@ -47,7 +47,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Phone className="text-blue-600 float-animation" size={24} />
+                <Phone className="text-blue-600" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">
                     {language === 'en' ? 'Phone' : 'Điện Thoại'}
@@ -62,7 +62,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Github className="text-blue-600 float-animation" size={24} />
+                <Github className="text-blue-600" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">GitHub</p>
                   <a
@@ -77,7 +77,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <Globe className="text-blue-600 float-animation" size={24} />
+                <Globe className="text-blue-600" size={24} />
                 <div>
                   <p className="font-semibold text-gray-800 dark:text-white">
                     {language === 'en' ? 'Portfolio' : 'Hồ Sơ'}
@@ -109,7 +109,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white glass-effect"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder={translations.contact.form.placeholders.name}
                 />
                 </div>
@@ -124,7 +124,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white glass-effect"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder={translations.contact.form.placeholders.email}
                 />
                 </div>
@@ -139,7 +139,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                   id="message"
                   name="message"
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none glass-effect"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
                   placeholder={translations.contact.form.placeholders.message}
                 ></textarea>
                 </div>
@@ -147,7 +147,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 btn-enhanced magnetic-button liquid-button ripple shadow-lg animated-gradient"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 btn-enhanced shadow-lg"
               >
                 {translations.contact.form.send}
               </button>
