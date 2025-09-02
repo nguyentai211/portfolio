@@ -160,7 +160,7 @@ const Navigation: React.FC<NavigationProps> = ({
             >
               <Languages size={20} className="group-hover:rotate-12" />
               <span className="text-sm font-medium">
-                {language === 'en' ? 'Tiếng Việt' : 'English'}
+                {language === 'en' ? 'Vi' : 'En'}
               </span>
             </button>
           </div>

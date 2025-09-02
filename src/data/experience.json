@@ -43,25 +43,27 @@
     },
     "description": {
       "en": "Led deployment and training for Hospital Information System across multiple healthcare facilities.",
-      "vi": "Dẫn đầu triển khai và đào tạo Hệ thống Thông tin Bệnh viện tại nhiều cơ sở y tế."
+      "vi": "Triển khai và đào tạo Hệ thống Thông tin Bệnh viện tại nhiều cơ sở y tế."
     },
     "achievements": {
       "en": [
-        "Deployed HIS across multiple hospital departments",
-        "Trained medical staff on system usage and best practices",
-        "Configured user accounts, departments, and medical inventory",
-        "Customized print templates for medical forms and reports",
-        "Provided comprehensive post-deployment support",
-        "Collected feedback and coordinated with developers for issue resolution"
-      ],
-      "vi": [
-        "Triển khai HIS trên nhiều khoa của bệnh viện",
-        "Đào tạo nhân viên y tế về cách sử dụng hệ thống và thực hành tốt nhất",
-        "Cấu hình tài khoản người dùng, khoa phòng và kho y tế",
-        "Tùy chỉnh mẫu in cho các biểu mẫu y tế và báo cáo",
-        "Cung cấp hỗ trợ toàn diện sau triển khai",
-        "Thu thập phản hồi và phối hợp với nhà phát triển để giải quyết vấn đề"
-      ]
+    "Deployed the Hospital Information System (HIS) across multiple departments.",
+    "Trained and supported doctors, nurses, and administrative staff on HIS usage and best practices.",
+    "Configured user accounts, department structure, drug lists, and medical inventory data.",
+    "Assisted with data entry and validated data volumes to meet project deadlines.",
+    "Customized print templates (exam forms, prescriptions, lab reports) to hospital requirements.",
+    "Collected user feedback and collaborated with developers to resolve technical issues.",
+    "Provided post-deployment support via helpdesk"
+  ],
+  "vi": [
+    "Triển khai Hệ thống Thông tin Bệnh viện (HIS) trên nhiều khoa/phòng.",
+    "Đào tạo và hỗ trợ bác sĩ, điều dưỡng và nhân viên hành chính sử dụng HIS và các thực hành tốt.",
+    "Cấu hình tài khoản người dùng, cơ cấu khoa phòng, danh mục thuốc và dữ liệu tồn kho y tế.",
+    "Hỗ trợ nhập liệu và kiểm tra khối lượng dữ liệu để kịp tiến độ dự án.",
+    "Tùy chỉnh mẫu in (phiếu khám, đơn thuốc, kết quả xét nghiệm) theo yêu cầu bệnh viện.",
+    "Thu thập phản hồi người dùng và phối hợp với đội phát triển để xử lý vấn đề kỹ thuật.",
+    "Cung cấp hỗ trợ sau triển khai qua helpdesk"
+  ]
     },
     "techStack": ["HIS", "Healthcare Systems", "User Training"]
   }

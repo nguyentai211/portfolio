@@ -54,25 +54,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12 animate-fadeInUp stagger-4">
-          <a
-            href={`mailto:${personalData.email}`}
-            className="group flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-xl btn-enhanced relative overflow-hidden"
-          >
-            <Mail size={24} className="group-hover:rotate-12 transition-transform duration-300" />
-            <span className="text-lg">{translations.buttons.getInTouch}</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </a>
-          
-          <a
-            href="/Nguyen_Cong_Khanh_Tai_CV.pdf"
-            download
-            className="group flex items-center justify-center space-x-3 px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-border text-blue-600 dark:text-blue-400 rounded-2xl font-semibold hover:text-white btn-enhanced relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-            <Download size={24} className="group-hover:animate-bounce relative z-10" />
-            <span className="text-lg relative z-10">{translations.buttons.downloadCV}</span>
-          </a>
-        </div>
+<a
+  href={`mailto:${personalData.email}`}
+  className="group relative overflow-hidden flex items-center justify-center px-8 py-4 rounded-2xl font-semibold shadow-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+>
+
+  <div className="absolute inset-0 z-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+
+  <div className="relative z-10 flex items-center gap-3">
+    <Mail size={24} className="group-hover:rotate-12 transition-transform duration-300" />
+    <span className="text-lg">{translations.buttons.getInTouch}</span>
+  </div>
+</a>
+
+
+  <a
+    href="https://drive.google.com/uc?export=download&id=15AAUhDguglKwOXwgvnd4jgmRnMpJELbK"
+    className="group flex items-center justify-center space-x-3 px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-xl btn-enhanced relative overflow-hidden"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+    <Download size={24} className="group-hover:animate-bounce relative z-10" />
+    <span className="text-lg relative z-10">{translations.buttons.downloadCV}</span>
+  </a>
+</div>
 
         <div className="flex justify-center space-x-6 animate-fadeInUp stagger-5">
           {[

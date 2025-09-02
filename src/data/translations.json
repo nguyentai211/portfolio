@@ -2,7 +2,7 @@
   "en": {
     "name": "Nguyễn Công Khánh Tài",
     "title": "Backend Developer & Software Engineer",
-    "subtitle": "Passionate about building scalable backend systems, microservices architecture, and delivering high-quality software solutions.",
+    "subtitle": "gamer, coder, designer, creator",
     "nav": {
       "home": "Home",
       "about": "About",
@@ -16,7 +16,7 @@
     },
     "about": {
       "title": "About Me",
-      "subtitle": "I'm a passionate Backend Developer with experience in building scalable systems and deploying healthcare solutions.",
+      "subtitle": "Backend Developer → Deployments → Helpdesk → System Admin",
       "education": "Education",
       "location": "Location"
     },
@@ -51,8 +51,8 @@
       }
     },
     "footer": {
-      "description": "Backend Developer passionate about creating efficient and scalable solutions",
-      "rights": "All rights reserved."
+      "description": "Backend Developer",
+      "rights": "."
     },
     "skills": {
       "languages": "Programming Languages",
@@ -64,7 +64,7 @@
   "vi": {
     "name": "Nguyễn Công Khánh Tài",
     "title": "Lập Trình Viên Backend & Kỹ Sư Phần Mềm",
-    "subtitle": "Đam mê xây dựng hệ thống backend có thể mở rộng, kiến trúc microservices và cung cấp các giải pháp phần mềm chất lượng cao.",
+    "subtitle": "gamer, coder, designer, creator",
     "nav": {
       "home": "Trang Chủ",
       "about": "Giới Thiệu",
@@ -78,7 +78,7 @@
     },
     "about": {
       "title": "Giới Thiệu",
-      "subtitle": "Tôi là một Lập trình viên Backend đam mê với kinh nghiệm xây dựng hệ thống có thể mở rộng và triển khai các giải pháp y tế.",
+      "subtitle": "Backend Developer → Deployments → Helpdesk → System Admin",
       "education": "Học Vấn",
       "location": "Địa Điểm"
     },
@@ -91,7 +91,7 @@
       "subtitle": "Một số công việc gần đây và dự án cá nhân của tôi",
       "keyFeatures": "Tính Năng Chính:",
       "buttons": {
-        "code": "Mã Nguồn",
+        "code": "code",
         "demo": "Demo"
       }
     },
@@ -113,8 +113,8 @@
       }
     },
     "footer": {
-      "description": "Lập trình viên Backend đam mê tạo ra các giải pháp hiệu quả và có thể mở rộng",
-      "rights": "Bảo lưu mọi quyền."
+      "description": "Lập trình viên Backend ",
+      "rights": "."
     },
     "skills": {
       "languages": "Ngôn Ngữ Lập Trình",
