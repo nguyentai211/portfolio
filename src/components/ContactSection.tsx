@@ -144,7 +144,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                 </span>
               </h3>
               
-              <form className="space-y-6 relative z-10">
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 {isSubmitted && (
                   <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl animate-fadeInUp">
@@ -172,7 +171,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     name="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
                     className={`w-full px-6 py-4 border-2 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500 ${
                       errors.name ? 'border-red-500 dark:border-red-400' : 'border-gray-200 dark:border-gray-600'
                     }`}
@@ -197,7 +195,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     name="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
                     className={`w-full px-6 py-4 border-2 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500 ${
                       errors.email ? 'border-red-500 dark:border-red-400' : 'border-gray-200 dark:border-gray-600'
                     }`}
@@ -222,7 +219,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
                     rows={5}
-                    className="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500"
                     className={`w-full px-6 py-4 border-2 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-500 ${
                       errors.message ? 'border-red-500 dark:border-red-400' : 'border-gray-200 dark:border-gray-600'
                     }`}
