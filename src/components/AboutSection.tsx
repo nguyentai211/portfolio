@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { GraduationCap, MapPin, Calendar, Code, Server, Sparkles } from 'lucide-react';
+import { GraduationCap, MapPin, Calendar, Code, Server } from 'lucide-react';
+import { observeElements } from '../utils/animations';
+import SectionHeader from './ui/SectionHeader';
+import SkillTag from './ui/SkillTag';
+import type { Translations, PersonalData } from '../types';
 
 interface AboutSectionProps {
-  translations: any;
-  personalData: any;
+  translations: Translations;
+  personalData: PersonalData;
   language: string;
 }
 
@@ -11,43 +15,24 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll('.fade-in-section');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
+    return observeElements(sectionRef.current);
   }, []);
 
   return (
     <section id="about" className="py-20 px-4" ref={sectionRef}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 fade-in-section">
-          <div className="inline-flex items-center space-x-2 mb-4">
-            <Sparkles className="text-blue-600 animate-pulse-slow" size={32} />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {translations.about.title}
-              </span>
-            </h2>
-            <Sparkles className="text-purple-600 animate-pulse-slow" size={32} />
-          </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {translations.about.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          title={translations.about.title}
+          subtitle={translations.about.subtitle}
+          leftIcon={GraduationCap}
+          rightIcon={Code}
+          leftIconColor="text-blue-500"
+          rightIconColor="text-purple-500"
+        />
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
+            {/* Education Card */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl card-hover fade-in-section stagger-1 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700"></div>
               <div className="flex items-center mb-6 relative z-10">
@@ -63,15 +48,16 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                   {personalData.education.university}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 text-lg mb-3">
-                  {personalData.education.degree[language]}
+                  {personalData.education.degree[language as keyof typeof personalData.education.degree]}
                 </p>
                 <p className="text-gray-500 dark:text-gray-400 flex items-center">
                   <Calendar size={18} className="mr-2 text-blue-600" />
-                  {personalData.education.graduationDate[language]}
+                  {personalData.education.graduationDate[language as keyof typeof personalData.education.graduationDate]}
                 </p>
               </div>
             </div>
 
+            {/* Location Card */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl card-hover fade-in-section stagger-2 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-green-500/10 to-blue-600/10 rounded-full -translate-y-16 -translate-x-16 group-hover:scale-150 transition-transform duration-700"></div>
               <div className="flex items-center mb-6 relative z-10">
@@ -83,12 +69,13 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 text-lg relative z-10">
-                {personalData.location[language]}
+                {personalData.location[language as keyof typeof personalData.location]}
               </p>
             </div>
           </div>
 
           <div className="space-y-8">
+            {/* Programming Languages */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl card-hover fade-in-section stagger-3 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-full -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-700"></div>
               <h3 className="text-2xl font-bold mb-6 flex items-center relative z-10">
@@ -101,17 +88,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
               </h3>
               <div className="flex flex-wrap gap-3 relative z-10">
                 {personalData.skills.languages.map((skill: string, index: number) => (
-                  <span
+                  <SkillTag
                     key={index}
-                    className={`px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300 rounded-xl text-sm font-semibold skill-tag animate-fadeInUp`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {skill}
-                  </span>
+                    skill={skill}
+                    index={index}
+                    variant="primary"
+                  />
                 ))}
               </div>
             </div>
 
+            {/* Frameworks & Tools */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl card-hover fade-in-section stagger-4 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-full -translate-y-20 -translate-x-20 group-hover:scale-150 transition-transform duration-700"></div>
               <h3 className="text-2xl font-bold mb-6 flex items-center relative z-10">
@@ -129,13 +116,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {personalData.skills.frameworks.map((skill: string, index: number) => (
-                      <span
+                      <SkillTag
                         key={index}
-                        className={`px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-purple-800 dark:text-purple-300 rounded-xl text-sm font-semibold skill-tag animate-fadeInUp`}
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        {skill}
-                      </span>
+                        skill={skill}
+                        index={index}
+                        variant="secondary"
+                      />
                     ))}
                   </div>
                 </div>
@@ -145,13 +131,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ translations, personalData,
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {personalData.skills.tools.map((skill: string, index: number) => (
-                      <span
+                      <SkillTag
                         key={index}
-                        className={`px-4 py-2 bg-gradient-to-r from-green-100 to-cyan-100 dark:from-green-900/30 dark:to-cyan-900/30 text-green-800 dark:text-green-300 rounded-xl text-sm font-semibold skill-tag animate-fadeInUp`}
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        {skill}
-                      </span>
+                        skill={skill}
+                        index={index}
+                        variant="accent"
+                      />
                     ))}
                   </div>
                 </div>

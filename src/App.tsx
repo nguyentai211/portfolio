@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import SplashScreen from './components/SplashScreen';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
@@ -11,25 +11,27 @@ import { useTheme } from './hooks/useTheme';
 import { useLanguage } from './hooks/useLanguage';
 import { useScrollTracking } from './hooks/useScrollTracking';
 import { 
-  getTranslations, 
-  getPersonalData, 
-  getExperienceData, 
-  getProjectsData 
+  getCachedTranslations, 
+  getCachedPersonalData, 
+  getCachedExperienceData, 
+  getCachedProjectsData 
 } from './utils/dataLoader';
 import './App.css';
 
-const App = () => {
+const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const { isDarkMode, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const { activeSection, isScrolled, scrollToSection } = useScrollTracking();
 
-  // Load data
-  const translations = getTranslations(language);
-  const personalData = getPersonalData();
-  const experienceData = getExperienceData();
-  const projectsData = getProjectsData();
+  // Memoized data loading for performance
+  const data = useMemo(() => ({
+    translations: getCachedTranslations(language),
+    personalData: getCachedPersonalData(),
+    experienceData: getCachedExperienceData(),
+    projectsData: getCachedProjectsData()
+  }), [language]);
 
   const handleScrollToSection = (sectionId: string) => {
     scrollToSection(sectionId);
@@ -49,44 +51,44 @@ const App = () => {
         isScrolled={isScrolled}
         isDarkMode={isDarkMode}
         language={language}
-        translations={translations}
+        translations={data.translations}
         scrollToSection={handleScrollToSection}
         toggleTheme={toggleTheme}
         toggleLanguage={toggleLanguage}
       />
 
       <HeroSection 
-        translations={translations}
-        personalData={personalData}
+        translations={data.translations}
+        personalData={data.personalData}
       />
 
       <AboutSection 
-        translations={translations}
-        personalData={personalData}
+        translations={data.translations}
+        personalData={data.personalData}
         language={language}
       />
 
       <ExperienceSection 
-        translations={translations}
-        experienceData={experienceData}
+        translations={data.translations}
+        experienceData={data.experienceData}
         language={language}
       />
 
       <ProjectsSection 
-        translations={translations}
-        projectsData={projectsData}
+        translations={data.translations}
+        projectsData={data.projectsData}
         language={language}
       />
 
       <ContactSection 
-        translations={translations}
-        personalData={personalData}
+        translations={data.translations}
+        personalData={data.personalData}
         language={language}
       />
 
       <Footer 
-        translations={translations}
-        personalData={personalData}
+        translations={data.translations}
+        personalData={data.personalData}
       />
     </div>
   );

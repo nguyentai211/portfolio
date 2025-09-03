@@ -1,16 +1,6 @@
-import { useState } from 'react';
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+import { useState, useCallback } from 'react';
+import { validateForm, sanitizeInput } from '../utils/validation';
+import type { FormData, FormErrors } from '../types';
 
 export const useContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -22,51 +12,32 @@ export const useContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleInputChange = useCallback((field: keyof FormData, value: string) => {
+    const sanitizedValue = sanitizeInput(value);
+    setFormData(prev => ({ ...prev, [field]: sanitizedValue }));
+    
     // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
-  };
+  }, [errors]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    const validationErrors = validateForm(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Simulate API call - replace with actual email service
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // For now, we'll create a mailto link as fallback
+      // Create mailto link as fallback
       const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`);
       const body = encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -84,13 +55,13 @@ export const useContactForm = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData]);
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setFormData({ name: '', email: '', message: '' });
     setErrors({});
     setIsSubmitted(false);
-  };
+  }, []);
 
   return {
     formData,
