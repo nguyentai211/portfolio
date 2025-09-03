@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SplashScreen from './components/SplashScreen';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -19,6 +20,7 @@ import './App.css';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const { isDarkMode, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const { activeSection, isScrolled, scrollToSection } = useScrollTracking();
@@ -33,6 +35,10 @@ const App = () => {
     scrollToSection(sectionId);
     setIsMenuOpen(false);
   };
+
+  if (showSplash) {
+    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900">

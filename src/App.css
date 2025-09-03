@@ -278,6 +278,48 @@ textarea:focus-visible {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Splash screen specific animations */
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splashFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.splash-enter {
+  animation: splashFadeIn 0.5s ease-out forwards;
+}
+
+.splash-exit {
+  animation: splashFadeOut 0.3s ease-in forwards;
+}
+
+/* Form validation styles */
+.form-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-success {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .card-hover:hover {
