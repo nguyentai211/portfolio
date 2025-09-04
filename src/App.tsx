@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import SplashScreen from './components/SplashScreen';
+import SEOHead from './components/SEOHead';
+import ProjectSchema from './components/ProjectSchema';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -44,58 +47,71 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 transition-colors duration-500">
-      <ScrollProgress />
-      
-      <Navigation
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        activeSection={activeSection}
-        isScrolled={isScrolled}
-        theme={theme}
+    <HelmetProvider>
+      <SEOHead 
         language={language}
-        translations={data.translations}
-        scrollToSection={handleScrollToSection}
-        toggleTheme={toggleTheme}
-        toggleLanguage={toggleLanguage}
-      />
-
-      <HeroSection 
-        translations={data.translations}
         personalData={data.personalData}
-      />
-
-      <AboutSection 
         translations={data.translations}
-        personalData={data.personalData}
+      />
+      <ProjectSchema 
+        projects={data.projectsData}
         language={language}
-      />
-
-      <ExperienceSection 
-        translations={data.translations}
-        experienceData={data.experienceData}
-        language={language}
-      />
-
-      <ProjectsSection 
-        translations={data.translations}
-        projectsData={data.projectsData}
-        language={language}
-      />
-
-      <ContactSection 
-        translations={data.translations}
-        personalData={data.personalData}
-        language={language}
-      />
-
-      <Footer 
-        translations={data.translations}
         personalData={data.personalData}
       />
       
-      <FloatingActionButton />
-    </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 transition-colors duration-500">
+        <ScrollProgress />
+        
+        <Navigation
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          activeSection={activeSection}
+          isScrolled={isScrolled}
+          theme={theme}
+          language={language}
+          translations={data.translations}
+          scrollToSection={handleScrollToSection}
+          toggleTheme={toggleTheme}
+          toggleLanguage={toggleLanguage}
+        />
+
+        <HeroSection 
+          translations={data.translations}
+          personalData={data.personalData}
+        />
+
+        <AboutSection 
+          translations={data.translations}
+          personalData={data.personalData}
+          language={language}
+        />
+
+        <ExperienceSection 
+          translations={data.translations}
+          experienceData={data.experienceData}
+          language={language}
+        />
+
+        <ProjectsSection 
+          translations={data.translations}
+          projectsData={data.projectsData}
+          language={language}
+        />
+
+        <ContactSection 
+          translations={data.translations}
+          personalData={data.personalData}
+          language={language}
+        />
+
+        <Footer 
+          translations={data.translations}
+          personalData={data.personalData}
+        />
+        
+        <FloatingActionButton />
+      </div>
+    </HelmetProvider>
   );
 };
 
