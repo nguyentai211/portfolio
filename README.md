@@ -82,12 +82,6 @@ npm run deploy
 yarn deploy
 ```
 
-## Customization
-
-- Update the personal information in `src/App.tsx`
-- Replace the placeholder images with your own
-- Modify the color scheme by updating the Tailwind configuration in `tailwind.config.js`
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

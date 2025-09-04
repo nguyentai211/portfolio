@@ -5,8 +5,8 @@
   "github": "https://github.com/taitai2107",
   "portfolio": "https://tainguyen-profile.is-a.dev",
   "location": {
-    "en": "Vietnam",
-    "vi": "Việt Nam"
+    "en": "HaNoi - Vietnam",
+    "vi": "Hà Nội - Việt Nam"
   },
   "education": {
     "university": "Dai Nam University",
@@ -20,7 +20,7 @@
     }
   },
   "skills": {
-    "languages": ["TypeScript", "JavaScript", "C#", "SQL (MySQL)", "HTML/CSS"],
+    "languages": ["TypeScript", "JavaScript", "C#", "SQL (MySQL)"],
     "frameworks": ["ASP.NET Core", "Node.js", "React", "Vue.js"],
     "tools": ["Git", "Docker", "Nvim", "VS Code", "WebStorm", "Rider", "Redis", "Linux", "CLI"]
   }
