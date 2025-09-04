@@ -57,3 +57,45 @@ export const getOptimizedImageUrl = (url: string, width: number, height: number)
   }
   return url;
 };
+
+// Mobile performance optimizations
+export const isMobile = (): boolean => {
+  return typeof window !== 'undefined' && window.innerWidth < 768;
+};
+
+export const reducedMotion = (): boolean => {
+  return typeof window !== 'undefined' && 
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+export const optimizeForMobile = () => {
+  if (typeof window === 'undefined') return;
+  
+  // Disable hover effects on mobile
+  if (isMobile()) {
+    document.documentElement.classList.add('mobile-device');
+  }
+  
+  // Reduce animations if user prefers
+  if (reducedMotion()) {
+    document.documentElement.classList.add('reduce-motion');
+  }
+};
+
+// Lazy loading utility
+export const lazyLoad = (target: HTMLElement, callback: () => void) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          callback();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  
+  observer.observe(target);
+  return () => observer.disconnect();
+};
