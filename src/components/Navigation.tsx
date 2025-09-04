@@ -8,19 +8,23 @@ import {
   Mail, 
   Sun, 
   Moon, 
-  Languages 
+  Languages,
+  Palette
 } from 'lucide-react';
+import ThemeSelector from './ui/ThemeSelector';
+import type { Theme } from '../types';
 
 interface NavigationProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
   activeSection: string;
   isScrolled: boolean;
-  isDarkMode: boolean;
+  theme: Theme;
   language: string;
   translations: any;
   scrollToSection: (sectionId: string) => void;
   toggleTheme: () => void;
+  changeTheme: (theme: Theme) => void;
   toggleLanguage: () => void;
 }
 
@@ -29,11 +33,12 @@ const Navigation: React.FC<NavigationProps> = ({
   setIsMenuOpen,
   activeSection,
   isScrolled,
-  isDarkMode,
+  theme,
   language,
   translations,
   scrollToSection,
   toggleTheme,
+  changeTheme,
   toggleLanguage
 }) => {
   const navItems = [
@@ -81,12 +86,17 @@ const Navigation: React.FC<NavigationProps> = ({
 
             {/* Theme and Language toggles */}
             <div className="hidden lg:flex items-center space-x-3 ml-6">
+              <ThemeSelector 
+                currentTheme={theme}
+                onThemeChange={changeTheme}
+              />
+              
               <button
                 onClick={toggleTheme}
-                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
-                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
+                title={theme !== 'light' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                {isDarkMode ? (
+                {theme !== 'light' ? (
                   <Sun size={20} className="group-hover:animate-spin" />
                 ) : (
                   <Moon size={20} className="group-hover:rotate-12" />
@@ -95,7 +105,7 @@ const Navigation: React.FC<NavigationProps> = ({
               
               <button
                 onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white btn-enhanced group"
+                className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white btn-enhanced group"
                 title="Switch language"
               >
                 <Languages size={20} className="group-hover:rotate-12" />
@@ -106,7 +116,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white btn-enhanced relative z-50"
+              className="lg:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white btn-enhanced relative z-50"
             >
               <div className="relative w-6 h-6">
                 <Menu 
@@ -139,18 +149,25 @@ const Navigation: React.FC<NavigationProps> = ({
       <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
         <div className="p-6 pt-20">
           {/* Mobile Theme and Language toggles */}
-          <div className="flex items-center justify-center space-x-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700 nord:border-nord-surface tokyo-night:border-tokyo-surface dracula:border-dracula-surface catppuccin:border-catppuccin-surface">
+            <ThemeSelector 
+              currentTheme={theme}
+              onThemeChange={changeTheme}
+              className="w-full"
+            />
+            
+            <div className="flex items-center justify-center space-x-4">
             <button
               onClick={toggleTheme}
               className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg btn-enhanced group"
             >
-              {isDarkMode ? (
+              {theme !== 'light' ? (
                 <Sun size={20} className="group-hover:animate-spin" />
               ) : (
                 <Moon size={20} className="group-hover:rotate-12" />
               )}
               <span className="text-sm font-medium">
-                {isDarkMode ? 'Light' : 'Dark'}
+                {theme !== 'light' ? 'Light' : 'Dark'}
               </span>
             </button>
             
@@ -163,6 +180,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 {language === 'en' ? 'Vi' : 'En'}
               </span>
             </button>
+          </div>
           </div>
           
           {/* Mobile Navigation Items */}

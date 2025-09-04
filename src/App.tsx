@@ -7,6 +7,8 @@ import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ui/ScrollProgress';
+import FloatingActionButton from './components/ui/FloatingActionButton';
 import { useTheme } from './hooks/useTheme';
 import { useLanguage } from './hooks/useLanguage';
 import { useScrollTracking } from './hooks/useScrollTracking';
@@ -21,7 +23,7 @@ import './App.css';
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { theme, isDarkMode, toggleTheme, changeTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const { activeSection, isScrolled, scrollToSection } = useScrollTracking();
 
@@ -43,17 +45,20 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 nord:from-nord-bg nord:to-nord-surface tokyo-night:from-tokyo-bg tokyo-night:to-tokyo-surface dracula:from-dracula-bg dracula:to-dracula-surface catppuccin:from-catppuccin-bg catppuccin:to-catppuccin-surface transition-colors duration-500">
+      <ScrollProgress />
+      
       <Navigation
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         activeSection={activeSection}
         isScrolled={isScrolled}
-        isDarkMode={isDarkMode}
+        theme={theme}
         language={language}
         translations={data.translations}
         scrollToSection={handleScrollToSection}
         toggleTheme={toggleTheme}
+        changeTheme={changeTheme}
         toggleLanguage={toggleLanguage}
       />
 
@@ -90,6 +95,8 @@ const App: React.FC = () => {
         translations={data.translations}
         personalData={data.personalData}
       />
+      
+      <FloatingActionButton />
     </div>
   );
 };

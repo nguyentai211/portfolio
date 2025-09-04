@@ -11,7 +11,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, index }) => {
 
   return (
     <div 
-      className="group p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-lg card-hover animate-fadeInUp relative overflow-hidden"
+      className="group p-6 bg-white dark:bg-gray-700 nord:bg-nord-bg tokyo-night:bg-tokyo-bg dracula:bg-dracula-bg catppuccin:bg-catppuccin-bg rounded-2xl shadow-lg card-hover animate-fadeInUp relative overflow-hidden"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${gradient}/10 rounded-full -translate-y-12 translate-x-12 group-hover:scale-150 transition-transform duration-700`}></div>
@@ -20,14 +20,14 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, index }) => {
           <Icon size={24} />
         </div>
         <div className="flex-1">
-          <p className="font-bold text-lg bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
+          <p className="font-bold text-lg bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 nord:from-nord-text nord:to-nord-text/80 tokyo-night:from-tokyo-text tokyo-night:to-tokyo-text/80 dracula:from-dracula-text dracula:to-dracula-text/80 catppuccin:from-catppuccin-text catppuccin:to-catppuccin-text/80 bg-clip-text text-transparent">
             {label}
           </p>
           <a
             href={href}
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className={`text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:${gradient} hover:bg-clip-text hover:text-transparent font-medium transition-all duration-300 break-all`}
+            className={`text-gray-600 dark:text-gray-300 nord:text-nord-text/80 tokyo-night:text-tokyo-text/80 dracula:text-dracula-text/80 catppuccin:text-catppuccin-text/80 hover:bg-gradient-to-r hover:${gradient} hover:bg-clip-text hover:text-transparent font-medium transition-all duration-300 break-all`}
           >
             {value}
           </a>

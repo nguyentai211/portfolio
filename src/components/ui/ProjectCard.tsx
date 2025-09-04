@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-hover fade-in-section group relative"
+      className="bg-white dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface rounded-2xl shadow-xl overflow-hidden card-hover fade-in-section group relative"
       style={{ animationDelay: `${index * 0.2}s` }}
     >
       {/* Project image with overlay effects */}
@@ -47,13 +47,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
       
       <div className="p-8">
-        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 nord:text-nord-text/80 tokyo-night:text-tokyo-text/80 dracula:text-dracula-text/80 catppuccin:text-catppuccin-text/80 mb-6 leading-relaxed">
           {project.description[language as keyof typeof project.description]}
         </p>
         
         <div className="mb-6">
           <h4 className="font-bold text-lg mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary bg-clip-text text-transparent">
               {translations.projects.keyFeatures}
             </span>
           </h4>
@@ -61,11 +61,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {project.features[language as keyof typeof project.features].slice(0, 3).map((feature: string, featureIndex: number) => (
               <li 
                 key={featureIndex} 
-                className="flex items-start text-sm text-gray-600 dark:text-gray-300 animate-fadeInUp group/feature"
+                className="flex items-start text-sm text-gray-600 dark:text-gray-300 nord:text-nord-text/80 tokyo-night:text-tokyo-text/80 dracula:text-dracula-text/80 catppuccin:text-catppuccin-text/80 animate-fadeInUp group/feature"
                 style={{ animationDelay: `${featureIndex * 0.1}s` }}
               >
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-2 mr-3 flex-shrink-0 group-hover/feature:scale-150 transition-transform duration-300"></div>
-                <span className="group-hover/feature:text-gray-800 dark:group-hover/feature:text-gray-100 transition-colors duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary rounded-full mt-2 mr-3 flex-shrink-0 group-hover/feature:scale-150 transition-transform duration-300"></div>
+                <span className="group-hover/feature:text-gray-800 dark:group-hover/feature:text-gray-100 nord:group-hover/feature:text-nord-text tokyo-night:group-hover/feature:text-tokyo-text dracula:group-hover/feature:text-dracula-text catppuccin:group-hover/feature:text-catppuccin-text transition-colors duration-300">
                   {feature}
                 </span>
               </li>
@@ -97,7 +97,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:from-gray-800 hover:to-gray-900 hover:text-white btn-enhanced group/btn flex-1 justify-center"
+            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 nord:from-nord-bg nord:to-nord-surface tokyo-night:from-tokyo-bg tokyo-night:to-tokyo-surface dracula:from-dracula-bg dracula:to-dracula-surface catppuccin:from-catppuccin-bg catppuccin:to-catppuccin-surface text-gray-700 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text rounded-xl hover:from-gray-800 hover:to-gray-900 hover:text-white btn-enhanced group/btn flex-1 justify-center"
           >
             <Github size={18} className="group-hover/btn:rotate-12 transition-transform duration-300" />
             <span className="font-medium">{translations.projects.buttons.code}</span>
@@ -107,7 +107,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 btn-enhanced group/btn flex-1 justify-center shadow-lg"
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 btn-enhanced group/btn flex-1 justify-center shadow-lg"
             >
               <ExternalLink size={18} className="group-hover/btn:rotate-12 transition-transform duration-300" />
               <span className="font-medium">{translations.projects.buttons.demo}</span>

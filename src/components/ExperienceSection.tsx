@@ -33,7 +33,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   }, []);
 
   return (
-    <section id="experience" className="py-20 px-4 bg-white dark:bg-gray-800 relative overflow-hidden" ref={sectionRef}>
+    <section id="experience" className="py-20 px-4 bg-white dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface relative overflow-hidden" ref={sectionRef}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-r from-blue-400/5 to-purple-600/5 rounded-full blur-3xl"></div>
@@ -75,41 +75,41 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 </div>
                 
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl card-hover relative overflow-hidden group">
+                  <div className="bg-white dark:bg-gray-700 nord:bg-nord-bg tokyo-night:bg-tokyo-bg dracula:bg-dracula-bg catppuccin:bg-catppuccin-bg p-8 rounded-2xl shadow-xl card-hover relative overflow-hidden group">
                     {/* Background decoration */}
                     <div className={`absolute top-0 ${index % 2 === 0 ? 'right-0' : 'left-0'} w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-full ${index % 2 === 0 ? '-translate-y-16 translate-x-16' : '-translate-y-16 -translate-x-16'} group-hover:scale-150 transition-transform duration-700`}></div>
                     
                     <div className="flex items-start mb-6 relative z-10">
-                      <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white mr-4 group-hover:rotate-12 transition-transform duration-300">
+                      <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary text-white mr-4 group-hover:rotate-12 transition-transform duration-300">
                         <Briefcase size={32} />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-2xl font-bold mb-2">
-                          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                          <span className="bg-gradient-to-r from-blue-600 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary bg-clip-text text-transparent">
                             {exp.position[language]}
                           </span>
                         </h3>
-                        <p className="text-xl font-semibold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
+                        <p className="text-xl font-semibold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 nord:from-nord-text nord:to-nord-text/80 tokyo-night:from-tokyo-text tokyo-night:to-tokyo-text/80 dracula:from-dracula-text dracula:to-dracula-text/80 catppuccin:from-catppuccin-text catppuccin:to-catppuccin-text/80 bg-clip-text text-transparent">
                           {exp.company}
                         </p>
                       </div>
                     </div>
                     
                     <div className="space-y-3 mb-6 relative z-10">
-                      <div className="flex items-center text-gray-500 dark:text-gray-400">
-                        <Calendar size={18} className="mr-3 text-blue-600" />
+                      <div className="flex items-center text-gray-500 dark:text-gray-400 nord:text-nord-text/60 tokyo-night:text-tokyo-text/60 dracula:text-dracula-text/60 catppuccin:text-catppuccin-text/60">
+                        <Calendar size={18} className="mr-3 text-blue-600 nord:text-nord-accent tokyo-night:text-tokyo-accent dracula:text-dracula-accent catppuccin:text-catppuccin-accent" />
                         <span className="font-medium">{exp.period}</span>
                       </div>
                       
                       {exp.location && (
-                        <div className="flex items-center text-gray-500 dark:text-gray-400">
-                          <MapPin size={18} className="mr-3 text-purple-600" />
+                        <div className="flex items-center text-gray-500 dark:text-gray-400 nord:text-nord-text/60 tokyo-night:text-tokyo-text/60 dracula:text-dracula-text/60 catppuccin:text-catppuccin-text/60">
+                          <MapPin size={18} className="mr-3 text-purple-600 nord:text-nord-secondary tokyo-night:text-tokyo-secondary dracula:text-dracula-secondary catppuccin:text-catppuccin-secondary" />
                           <span className="text-sm">{exp.location[language]}</span>
                         </div>
                       )}
                     </div>
                     
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed relative z-10">
+                    <p className="text-gray-600 dark:text-gray-300 nord:text-nord-text/80 tokyo-night:text-tokyo-text/80 dracula:text-dracula-text/80 catppuccin:text-catppuccin-text/80 mb-6 text-lg leading-relaxed relative z-10">
                       {exp.description[language]}
                     </p>
                     
