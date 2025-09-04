@@ -17,7 +17,7 @@ export const useTheme = () => {
 
   const applyTheme = (newTheme: Theme) => {
     // Remove all theme classes
-    document.documentElement.classList.remove('dark', 'nord', 'tokyo-night', 'dracula', 'catppuccin');
+    document.documentElement.classList.remove('dark');
     
     // Apply new theme
     if (newTheme !== 'light') {

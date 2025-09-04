@@ -95,16 +95,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
           ].map(({ href, icon: Icon, color }, index) => (
             <a
               key={index}
-              href={href}
+              className="group flex items-center justify-center space-x-3 px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold shadow-xl btn-enhanced relative overflow-hidden"
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className={`group p-4 rounded-2xl bg-white dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface shadow-lg hover:shadow-2xl btn-enhanced relative overflow-hidden animate-scaleIn`}
+              className={`group p-4 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl btn-enhanced relative overflow-hidden animate-scaleIn`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               <Icon 
                 size={28} 
-                className="text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text group-hover:text-white group-hover:scale-110 transition-all duration-300 relative z-10" 
+                className="text-gray-600 dark:text-gray-300 group-hover:text-white group-hover:scale-110 transition-all duration-300 relative z-10" 
               />
             </a>
           ))}
@@ -113,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
         <div className="mt-16 animate-fadeInUp stagger-5">
           <ChevronDown 
             size={40} 
-            className="mx-auto text-gray-400 nord:text-nord-text/60 tokyo-night:text-tokyo-text/60 dracula:text-dracula-text/60 catppuccin:text-catppuccin-text/60 hover:text-blue-600 nord:hover:text-nord-accent tokyo-night:hover:text-tokyo-accent dracula:hover:text-dracula-accent catppuccin:hover:text-catppuccin-accent cursor-pointer animate-bounce hover:animate-pulse transition-colors duration-300" 
+            className="mx-auto text-gray-400 hover:text-blue-600 cursor-pointer animate-bounce hover:animate-pulse transition-colors duration-300" 
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           />
         </div>

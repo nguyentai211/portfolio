@@ -86,14 +86,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
             {/* Theme and Language toggles */}
             <div className="hidden lg:flex items-center space-x-3 ml-6">
-              <ThemeSelector 
-                currentTheme={theme}
-                onThemeChange={changeTheme}
-              />
-              
               <button
                 onClick={toggleTheme}
-                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
+                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
                 title={theme !== 'light' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {theme !== 'light' ? (
@@ -105,7 +100,7 @@ const Navigation: React.FC<NavigationProps> = ({
               
               <button
                 onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white btn-enhanced group"
+                className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 hover:text-white btn-enhanced group"
                 title="Switch language"
               >
                 <Languages size={20} className="group-hover:rotate-12" />
@@ -116,7 +111,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface text-gray-600 dark:text-gray-300 nord:text-nord-text tokyo-night:text-tokyo-text dracula:text-dracula-text catppuccin:text-catppuccin-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white btn-enhanced relative z-50"
+              className="lg:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white btn-enhanced relative z-50"
             >
               <div className="relative w-6 h-6">
                 <Menu 
@@ -149,13 +144,7 @@ const Navigation: React.FC<NavigationProps> = ({
       <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
         <div className="p-6 pt-20">
           {/* Mobile Theme and Language toggles */}
-          <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700 nord:border-nord-surface tokyo-night:border-tokyo-surface dracula:border-dracula-surface catppuccin:border-catppuccin-surface">
-            <ThemeSelector 
-              currentTheme={theme}
-              onThemeChange={changeTheme}
-              className="w-full"
-            />
-            
+          <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-center space-x-4">
             <button
               onClick={toggleTheme}

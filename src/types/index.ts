@@ -129,7 +129,7 @@ export interface Translations {
 
 export type Language = 'en' | 'vi';
 
-export type Theme = 'light' | 'dark' | 'nord' | 'tokyo-night' | 'dracula' | 'catppuccin';
+export type Theme = 'light' | 'dark';
 
 export interface ThemeOption {
   id: Theme;

@@ -45,7 +45,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 nord:from-nord-bg nord:to-nord-surface tokyo-night:from-tokyo-bg tokyo-night:to-tokyo-surface dracula:from-dracula-bg dracula:to-dracula-surface catppuccin:from-catppuccin-bg catppuccin:to-catppuccin-surface transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 transition-colors duration-500">
       <ScrollProgress />
       
       <Navigation
