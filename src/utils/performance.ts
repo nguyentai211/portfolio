@@ -68,6 +68,34 @@ export const reducedMotion = (): boolean => {
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 };
 
+export const isLowPowerMode = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  
+  const connection = (navigator as any).connection;
+  const saveData = connection?.saveData || false;
+  const reducedMotionPref = reducedMotion();
+  
+  return saveData || reducedMotionPref;
+};
+
+export const supportsBattery = (): boolean => {
+  return typeof navigator !== 'undefined' && 'getBattery' in navigator;
+};
+
+export const checkBatteryLevel = async (): Promise<{ level: number; charging: boolean } | null> => {
+  if (!supportsBattery()) return null;
+  
+  try {
+    const battery = await (navigator as any).getBattery();
+    return {
+      level: battery.level,
+      charging: battery.charging
+    };
+  } catch {
+    return null;
+  }
+};
+
 export const optimizeForMobile = () => {
   if (typeof window === 'undefined') return;
   
@@ -79,6 +107,11 @@ export const optimizeForMobile = () => {
   // Reduce animations if user prefers
   if (reducedMotion()) {
     document.documentElement.classList.add('reduce-motion');
+  }
+  
+  // Check for low power mode
+  if (isLowPowerMode()) {
+    document.documentElement.classList.add('low-power-mode');
   }
 };
 

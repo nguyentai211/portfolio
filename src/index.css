@@ -111,6 +111,52 @@ body {
   }
 }
 
+/* 3D Card animations */
+@keyframes aurora-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(30px, -30px, 0) rotate(1deg);
+  }
+  66% {
+    transform: translate3d(-20px, 20px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes aurora-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-30px, -20px, 0) rotate(2deg);
+  }
+}
+
+@keyframes aurora-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(20px, -40px, 0) rotate(-1deg);
+  }
+  75% {
+    transform: translate3d(-40px, 20px, 0) rotate(1deg);
+  }
+}
+
+@keyframes idle-wobble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
 /* Enhanced card effects with GPU acceleration */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -125,6 +171,19 @@ body {
 
 .dark .card-hover:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Card utilities */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 /* Optimized button effects */
@@ -244,6 +303,26 @@ body {
 .animate-pulse-slow {
   animation: pulse 2s ease-in-out infinite;
   will-change: opacity;
+}
+
+.animate-idle-wobble {
+  animation: idle-wobble 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 25s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-aurora-3 {
+  animation: aurora-3 30s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Stagger animations */
@@ -369,6 +448,22 @@ input:hover, textarea:hover {
   .particle-background {
     display: none;
   }
+  
+  /* Disable 3D effects on mobile for performance */
+  .preserve-3d {
+    transform-style: flat;
+  }
+  
+  .backface-hidden {
+    backface-visibility: visible;
+  }
+  
+  /* Simplify aurora on mobile */
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
+    animation: none;
+  }
 }
 
 /* Mobile device specific optimizations */
@@ -380,6 +475,21 @@ input:hover, textarea:hover {
 .mobile-device .card-hover::before,
 .mobile-device .btn-enhanced::before {
   display: none;
+}
+
+/* Low power mode optimizations */
+.low-power-mode .animate-float,
+.low-power-mode .animate-pulse-slow,
+.low-power-mode .animate-idle-wobble,
+.low-power-mode .animate-aurora-1,
+.low-power-mode .animate-aurora-2,
+.low-power-mode .animate-aurora-3 {
+  animation: none !important;
+}
+
+.low-power-mode .particle-background,
+.low-power-mode .aurora-background {
+  display: none !important;
 }
 
 /* Reduced motion optimizations */
@@ -425,6 +535,13 @@ textarea:focus-visible {
   
   .animate-float,
   .animate-pulse-slow {
+    animation: none !important;
+  }
+  
+  .animate-idle-wobble,
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
     animation: none !important;
   }
 }
