@@ -8,10 +8,8 @@ import {
   Mail, 
   Sun, 
   Moon, 
-  Languages,
-  Palette
+  Languages
 } from 'lucide-react';
-import ThemeSelector from './ui/ThemeSelector';
 import type { Theme } from '../types';
 
 interface NavigationProps {
@@ -24,7 +22,6 @@ interface NavigationProps {
   translations: any;
   scrollToSection: (sectionId: string) => void;
   toggleTheme: () => void;
-  changeTheme: (theme: Theme) => void;
   toggleLanguage: () => void;
 }
 
@@ -38,7 +35,6 @@ const Navigation: React.FC<NavigationProps> = ({
   translations,
   scrollToSection,
   toggleTheme,
-  changeTheme,
   toggleLanguage
 }) => {
   const navItems = [
@@ -146,30 +142,30 @@ const Navigation: React.FC<NavigationProps> = ({
           {/* Mobile Theme and Language toggles */}
           <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg btn-enhanced group"
-            >
-              {theme !== 'light' ? (
-                <Sun size={20} className="group-hover:animate-spin" />
-              ) : (
-                <Moon size={20} className="group-hover:rotate-12" />
-              )}
-              <span className="text-sm font-medium">
-                {theme !== 'light' ? 'Light' : 'Dark'}
-              </span>
-            </button>
-            
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg btn-enhanced group"
-            >
-              <Languages size={20} className="group-hover:rotate-12" />
-              <span className="text-sm font-medium">
-                {language === 'en' ? 'Vi' : 'En'}
-              </span>
-            </button>
-          </div>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg btn-enhanced group"
+              >
+                {theme !== 'light' ? (
+                  <Sun size={20} className="group-hover:animate-spin" />
+                ) : (
+                  <Moon size={20} className="group-hover:rotate-12" />
+                )}
+                <span className="text-sm font-medium">
+                  {theme !== 'light' ? 'Light' : 'Dark'}
+                </span>
+              </button>
+              
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg btn-enhanced group"
+              >
+                <Languages size={20} className="group-hover:rotate-12" />
+                <span className="text-sm font-medium">
+                  {language === 'en' ? 'Vi' : 'En'}
+                </span>
+              </button>
+            </div>
           </div>
           
           {/* Mobile Navigation Items */}

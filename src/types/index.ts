@@ -131,19 +131,6 @@ export type Language = 'en' | 'vi';
 
 export type Theme = 'light' | 'dark';
 
-export interface ThemeOption {
-  id: Theme;
-  name: string;
-  description: string;
-  colors: {
-    bg: string;
-    surface: string;
-    text: string;
-    accent: string;
-    secondary: string;
-  };
-}
-
 export interface FormData {
   name: string;
   email: string;

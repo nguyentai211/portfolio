@@ -24,6 +24,7 @@
 /* Enhanced global styles */
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -32,8 +33,12 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Remove duplicate animations and optimize existing ones */
 /* Performance-optimized animations */
 @keyframes fadeInUp {
   from {
@@ -118,11 +123,11 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.dark .card-hover:hover,
 .dark .card-hover:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Optimized button effects */
 /* Enhanced button effects */
 .btn-enhanced {
   position: relative;
@@ -156,6 +161,7 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
+/* Optimized navigation */
 /* Navigation enhancements */
 .nav-enhanced {
   backdrop-filter: blur(20px);
@@ -168,6 +174,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Optimized mobile menu */
 /* Mobile menu */
 .mobile-menu-overlay {
   position: fixed;
@@ -203,6 +210,7 @@ body {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Optimized skill tags */
 /* Skill tag animations */
 .skill-tag {
   transition: all 0.3s ease;
@@ -215,6 +223,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Simplified timeline */
 /* Timeline enhancements */
 .timeline-line {
   position: absolute;
@@ -226,6 +235,7 @@ body {
   transform: translateX(-50%);
 }
 
+/* Optimized animations with better performance */
 /* Animation classes with GPU acceleration */
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -257,12 +267,6 @@ body {
   will-change: opacity;
 }
 
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
 /* Stagger animations */
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
@@ -270,6 +274,7 @@ body {
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 
+/* Optimized intersection observer animations */
 /* Intersection observer animations */
 .fade-in-section {
   opacity: 0;
@@ -283,12 +288,7 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* Performance optimizations */
-.gpu-accelerated {
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-}
-
+/* Optimized form styling */
 /* Enhanced form styling */
 input, textarea {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -304,6 +304,7 @@ input:hover, textarea:hover {
   border-color: #60a5fa;
 }
 
+/* Optimized scrollbar */
 /* Custom scrollbar with gradient */
 ::-webkit-scrollbar {
   width: 8px;
@@ -328,27 +329,7 @@ input:hover, textarea:hover {
   color: var(--text-primary);
 }
 
-/* Theme-specific utility classes */
-.bg-theme-primary {
-  background-color: var(--bg-primary);
-}
-
-.bg-theme-secondary {
-  background-color: var(--bg-secondary);
-}
-
-.text-theme-primary {
-  color: var(--text-primary);
-}
-
-.text-theme-secondary {
-  color: var(--text-secondary);
-}
-
-.border-theme {
-  border-color: var(--bg-secondary);
-}
-
+/* Mobile optimizations */
 /* Responsive optimizations */
 @media (max-width: 768px) {
   .card-hover:hover {
@@ -364,16 +345,19 @@ input:hover, textarea:hover {
     animation-duration: 4s;
   }
 
+  /* Improve touch targets */
   button, a {
     min-height: 44px;
     min-width: 44px;
   }
   
+  /* Prevent zoom on input focus */
   input, textarea, select {
     font-size: 16px;
   }
 }
 
+/* Accessibility improvements */
 /* Enhanced focus indicators */
 button:focus-visible,
 a:focus-visible,
@@ -384,6 +368,7 @@ textarea:focus-visible {
   border-radius: 8px;
 }
 
+/* Form validation improvements */
 /* Form validation styles */
 .form-error {
   border-color: #ef4444 !important;
@@ -395,6 +380,7 @@ textarea:focus-visible {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
 }
 
+/* Accessibility: Reduced motion support */
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -411,6 +397,7 @@ textarea:focus-visible {
   }
 }
 
+/* Accessibility: High contrast support */
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .bg-gradient-to-r {
@@ -419,6 +406,7 @@ textarea:focus-visible {
   }
 }
 
+/* Print optimizations */
 /* Print styles */
 @media print {
   .no-print {
@@ -432,7 +420,19 @@ textarea:focus-visible {
   }
 }
 
-/* Performance optimizations */
-* {
+/* Global performance optimizations */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optimize transitions for better performance */
+.transition-colors {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

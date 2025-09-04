@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { smoothScrollTo } from '../utils/animations';
+import { throttle } from '../utils/performance';
 import { SCROLL_THRESHOLD } from '../constants';
 
 export const useScrollTracking = () => {
@@ -27,17 +28,7 @@ export const useScrollTracking = () => {
   }, [activeSection]);
 
   useEffect(() => {
-    let ticking = false;
-    
-    const throttledScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    const throttledScroll = throttle(handleScroll, 16); // ~60fps
 
     window.addEventListener('scroll', throttledScroll, { passive: true });
     return () => window.removeEventListener('scroll', throttledScroll);

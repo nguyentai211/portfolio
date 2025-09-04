@@ -38,5 +38,5 @@ export const useTheme = () => {
 
   const isDarkMode = theme !== 'light';
 
-  return { theme, isDarkMode, toggleTheme, changeTheme };
+  return { theme, isDarkMode, toggleTheme };
 };

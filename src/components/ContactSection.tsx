@@ -65,7 +65,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-800 nord:bg-nord-surface tokyo-night:bg-tokyo-surface dracula:bg-dracula-surface catppuccin:bg-catppuccin-surface relative overflow-hidden" ref={sectionRef}>
+    <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-800 relative overflow-hidden" ref={sectionRef}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-r from-green-400/10 to-blue-600/10 rounded-full blur-3xl animate-float"></div>
@@ -102,11 +102,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
 
           <div className="fade-in-section stagger-2">
-            <div className="bg-white dark:bg-gray-700 nord:bg-nord-bg tokyo-night:bg-tokyo-bg dracula:bg-dracula-bg catppuccin:bg-catppuccin-bg p-8 rounded-2xl shadow-xl relative overflow-hidden group">
+            <div className="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-full -translate-y-16 -translate-x-16 group-hover:scale-150 transition-transform duration-700"></div>
               
               <h3 className="text-3xl font-bold mb-8 relative z-10">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   {translations.contact.form.title}
                 </span>
               </h3>

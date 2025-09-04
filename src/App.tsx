@@ -18,7 +18,6 @@ import {
   getCachedExperienceData, 
   getCachedProjectsData 
 } from './utils/dataLoader';
-import './App.css';
 
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +57,6 @@ const App: React.FC = () => {
         translations={data.translations}
         scrollToSection={handleScrollToSection}
         toggleTheme={toggleTheme}
-        changeTheme={changeTheme}
         toggleLanguage={toggleLanguage}
       />
 

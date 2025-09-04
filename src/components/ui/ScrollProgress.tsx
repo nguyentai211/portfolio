@@ -18,9 +18,9 @@ const ScrollProgress: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/50 dark:bg-gray-800/50 nord:bg-nord-surface/50 tokyo-night:bg-tokyo-surface/50 dracula:bg-dracula-surface/50 catppuccin:bg-catppuccin-surface/50">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/50 dark:bg-gray-800/50">
       <div 
-        className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 nord:from-nord-accent nord:to-nord-secondary tokyo-night:from-tokyo-accent tokyo-night:to-tokyo-secondary dracula:from-dracula-accent dracula:to-dracula-secondary catppuccin:from-catppuccin-accent catppuccin:to-catppuccin-secondary transition-all duration-300 ease-out"
+        className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>

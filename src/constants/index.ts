@@ -23,8 +23,6 @@ export const BREAKPOINTS = {
 export const SCROLL_THRESHOLD = 50;
 export const INTERSECTION_THRESHOLD = 0.1;
 
-export const CV_DOWNLOAD_URL = 'https://drive.google.com/uc?export=download&id=15AAUhDguglKwOXwgvnd4jgmRnMpJELbK';
-
 export const GRADIENT_CLASSES = {
   PRIMARY: 'from-blue-600 via-purple-600 to-pink-600',
   SECONDARY: 'from-blue-500 to-purple-600',
@@ -34,4 +32,10 @@ export const GRADIENT_CLASSES = {
   ERROR: 'from-red-500 to-pink-600',
   NEUTRAL: 'from-gray-600 to-gray-800',
   CYAN: 'from-blue-500 to-cyan-600',
+} as const;
+
+export const SKILL_VARIANTS = {
+  PRIMARY: 'from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300',
+  SECONDARY: 'from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-purple-800 dark:text-purple-300',
+  ACCENT: 'from-green-100 to-cyan-100 dark:from-green-900/30 dark:to-cyan-900/30 text-green-800 dark:text-green-300'
 } as const;
