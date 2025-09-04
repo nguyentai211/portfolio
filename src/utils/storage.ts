@@ -36,4 +36,5 @@ export const STORAGE_KEYS = {
   THEME: 'theme',
   LANGUAGE: 'language',
   USER_PREFERENCES: 'userPreferences',
+  AUTO_THEME: 'autoTheme',
 } as const;

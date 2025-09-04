@@ -12,7 +12,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ui/ScrollProgress';
 import FloatingActionButton from './components/ui/FloatingActionButton';
-import { useTheme } from './hooks/useTheme';
+import { useTimeBasedTheme } from './hooks/useTimeBasedTheme';
 import { useLanguage } from './hooks/useLanguage';
 import { useScrollTracking } from './hooks/useScrollTracking';
 import { 
@@ -25,7 +25,7 @@ import {
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
-  const { theme, isDarkMode, toggleTheme, changeTheme } = useTheme();
+  const { theme, isDarkMode, isAutoMode, toggleTheme, toggleAutoMode, changeTheme } = useTimeBasedTheme();
   const { language, toggleLanguage } = useLanguage();
   const { activeSection, isScrolled, scrollToSection } = useScrollTracking();
 
@@ -68,10 +68,12 @@ const App: React.FC = () => {
           activeSection={activeSection}
           isScrolled={isScrolled}
           theme={theme}
+          isAutoMode={isAutoMode}
           language={language}
           translations={data.translations}
           scrollToSection={handleScrollToSection}
           toggleTheme={toggleTheme}
+          toggleAutoMode={toggleAutoMode}
           toggleLanguage={toggleLanguage}
         />
 
