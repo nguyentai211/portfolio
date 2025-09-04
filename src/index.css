@@ -111,52 +111,6 @@ body {
   }
 }
 
-/* 3D Card animations */
-@keyframes aurora-1 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate3d(30px, -30px, 0) rotate(1deg);
-  }
-  66% {
-    transform: translate3d(-20px, 20px, 0) rotate(-1deg);
-  }
-}
-
-@keyframes aurora-2 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(-30px, -20px, 0) rotate(2deg);
-  }
-}
-
-@keyframes aurora-3 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate3d(20px, -40px, 0) rotate(-1deg);
-  }
-  75% {
-    transform: translate3d(-40px, 20px, 0) rotate(1deg);
-  }
-}
-
-@keyframes idle-wobble {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(0.5deg);
-  }
-  75% {
-    transform: rotate(-0.5deg);
-  }
-}
-
 /* Enhanced card effects with GPU acceleration */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -171,19 +125,6 @@ body {
 
 .dark .card-hover:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* 3D Card utilities */
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
 }
 
 /* Optimized button effects */
@@ -244,8 +185,29 @@ body {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   z-index: 40;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open {
+  transform: translate3d(0, 0, 0);
+}
+
+.dark .mobile-menu {
+  background: rgba(17, 24, 39, 0.98);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Optimized skill tags */
@@ -303,26 +265,6 @@ body {
 .animate-pulse-slow {
   animation: pulse 2s ease-in-out infinite;
   will-change: opacity;
-}
-
-.animate-idle-wobble {
-  animation: idle-wobble 4s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-aurora-1 {
-  animation: aurora-1 20s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-aurora-2 {
-  animation: aurora-2 25s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-aurora-3 {
-  animation: aurora-3 30s ease-in-out infinite;
-  will-change: transform;
 }
 
 /* Stagger animations */
@@ -390,6 +332,19 @@ input:hover, textarea:hover {
 /* Mobile optimizations */
 /* Responsive optimizations */
 @media (max-width: 768px) {
+  .card-hover:hover {
+    transform: translate3d(0, -4px, 0) scale3d(1.01, 1.01, 1);
+  }
+  
+  .btn-enhanced:hover {
+    transform: translate3d(0, -1px, 0);
+  }
+  
+  /* Reduce animations on mobile for better performance */
+  .animate-float {
+    animation-duration: 4s;
+  }
+
   /* Improve touch targets */
   button, a {
     min-height: 44px;
@@ -438,13 +393,6 @@ textarea:focus-visible {
   
   .animate-float,
   .animate-pulse-slow {
-    animation: none !important;
-  }
-  
-  .animate-idle-wobble,
-  .animate-aurora-1,
-  .animate-aurora-2,
-  .animate-aurora-3 {
     animation: none !important;
   }
 }

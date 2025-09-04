@@ -25,10 +25,6 @@ export default {
         'scaleIn': 'scaleIn 0.5s ease-out forwards',
         'float': 'float 3s ease-in-out infinite',
         'pulse-slow': 'pulse 2s ease-in-out infinite',
-        'idle-wobble': 'idle-wobble 4s ease-in-out infinite',
-        'aurora-1': 'aurora-1 20s ease-in-out infinite',
-        'aurora-2': 'aurora-2 25s ease-in-out infinite',
-        'aurora-3': 'aurora-3 30s ease-in-out infinite',
       },
       backdropBlur: {
         'xs': '2px',
@@ -42,12 +38,6 @@ export default {
       },
       maxWidth: {
         '8xl': '88rem',
-      },
-      perspective: {
-        '1000': '1000px',
-      },
-      rotate: {
-        'y-180': '180deg',
       }
     },
   },
