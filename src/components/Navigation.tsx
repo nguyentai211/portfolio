@@ -8,10 +8,8 @@ import {
   Mail, 
   Sun, 
   Moon, 
-  Languages,
-  Clock
+  Languages
 } from 'lucide-react';
-import AuroraBackground from './ui/AuroraBackground';
 import type { Theme } from '../types';
 
 interface NavigationProps {
@@ -20,12 +18,10 @@ interface NavigationProps {
   activeSection: string;
   isScrolled: boolean;
   theme: Theme;
-  isAutoMode?: boolean;
   language: string;
   translations: any;
   scrollToSection: (sectionId: string) => void;
   toggleTheme: () => void;
-  toggleAutoMode?: () => void;
   toggleLanguage: () => void;
 }
 
@@ -35,12 +31,10 @@ const Navigation: React.FC<NavigationProps> = ({
   activeSection,
   isScrolled,
   theme,
-  isAutoMode = false,
   language,
   translations,
   scrollToSection,
   toggleTheme,
-  toggleAutoMode,
   toggleLanguage
 }) => {
   const navItems = [
@@ -56,15 +50,6 @@ const Navigation: React.FC<NavigationProps> = ({
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled ? 'nav-enhanced shadow-xl' : 'bg-transparent'
       }`}>
-        {/* Aurora background only when menu is closed */}
-        {!isMenuOpen && (
-          <AuroraBackground 
-            intensity="light" 
-            disabled={isScrolled}
-            className="absolute inset-0"
-          />
-        )}
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold">
@@ -97,35 +82,15 @@ const Navigation: React.FC<NavigationProps> = ({
 
             {/* Theme and Language toggles */}
             <div className="hidden lg:flex items-center space-x-3 ml-6">
-              {/* Auto theme toggle */}
-              {toggleAutoMode && (
-                <button
-                  onClick={toggleAutoMode}
-                  className={`p-3 rounded-xl btn-enhanced group relative ${
-                    isAutoMode 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-400 hover:to-purple-500 hover:text-white'
-                  }`}
-                  title={isAutoMode ? 'Disable auto theme' : 'Enable auto theme (follows time)'}
-                >
-                  <Clock size={20} className={isAutoMode ? 'animate-pulse' : 'group-hover:rotate-12'} />
-                </button>
-              )}
-              
               <button
                 onClick={toggleTheme}
-                className={`p-3 rounded-xl btn-enhanced group ${
-                  isAutoMode 
-                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed' 
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white'
-                }`}
+                className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-orange-500 hover:text-white btn-enhanced group"
                 title={theme !== 'light' ? 'Switch to light mode' : 'Switch to dark mode'}
-                disabled={isAutoMode}
               >
                 {theme !== 'light' ? (
-                  <Sun size={20} className={isAutoMode ? '' : 'group-hover:animate-spin'} />
+                  <Sun size={20} className="group-hover:animate-spin" />
                 ) : (
-                  <Moon size={20} className={isAutoMode ? '' : 'group-hover:rotate-12'} />
+                  <Moon size={20} className="group-hover:rotate-12" />
                 )}
               </button>
               
@@ -172,41 +137,55 @@ const Navigation: React.FC<NavigationProps> = ({
       )}
 
       {/* Mobile Navigation Menu */}
-      <div className={`fixed top-0 right-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-l border-gray-200/50 dark:border-gray-700/50 z-50 transform transition-transform duration-300 ease-out lg:hidden ${
-        isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <div className="p-6 pt-24">
-          {/* Simple Mobile Theme and Language toggles */}
-          <div className="flex justify-center space-x-3 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
-            <button
-              onClick={toggleTheme}
-              className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
-            >
-              {theme !== 'light' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            
-            <button
-              onClick={toggleLanguage}
-              className="px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
-            >
-              <span className="text-sm font-medium">{language.toUpperCase()}</span>
-            </button>
+      <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
+        <div className="p-6 pt-20">
+          {/* Mobile Theme and Language toggles */}
+          <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-center space-x-4">
+              <button
+                onClick={toggleTheme}
+                className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg btn-enhanced group"
+              >
+                {theme !== 'light' ? (
+                  <Sun size={20} className="group-hover:animate-spin" />
+                ) : (
+                  <Moon size={20} className="group-hover:rotate-12" />
+                )}
+                <span className="text-sm font-medium">
+                  {theme !== 'light' ? 'Light' : 'Dark'}
+                </span>
+              </button>
+              
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg btn-enhanced group"
+              >
+                <Languages size={20} className="group-hover:rotate-12" />
+                <span className="text-sm font-medium">
+                  {language === 'en' ? 'Vi' : 'En'}
+                </span>
+              </button>
+            </div>
           </div>
           
           {/* Mobile Navigation Items */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {navItems.map(({ id, label, icon: Icon }, index) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`flex items-center space-x-4 w-full px-6 py-4 text-left rounded-xl transition-colors duration-200 ${
+                className={`flex items-center space-x-4 w-full px-6 py-4 text-left rounded-xl btn-enhanced group relative overflow-hidden ${
                   activeSection === id
-                    ? 'bg-blue-500 text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white'
                 }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Icon size={20} />
-                <span className="text-base font-medium">{label}</span>
+                <Icon size={24} className="relative z-10" />
+                <span className="text-lg font-medium relative z-10">{label}</span>
+                {activeSection !== id && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                )}
               </button>
             ))}
           </div>

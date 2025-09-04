@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { isMobile } from '../../utils/performance';
 
 interface Particle {
   x: number;
@@ -25,11 +24,6 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   const particlesRef = useRef<Particle[]>([]);
 
   useEffect(() => {
-    // Reduce particles on mobile for better performance
-    if (isMobile()) {
-      particleCount = Math.min(particleCount, 15);
-    }
-    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -104,7 +98,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 pointer-events-none opacity-30 particle-background ${className}`}
+      className={`absolute inset-0 pointer-events-none opacity-30 ${className}`}
       style={{ zIndex: 1 }}
     />
   );

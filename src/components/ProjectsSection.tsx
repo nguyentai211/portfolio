@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Zap, Star } from 'lucide-react';
 import { observeElements } from '../utils/animations';
 import SectionHeader from './ui/SectionHeader';
-import ProjectCard3D from './ui/ProjectCard3D';
+import ProjectCard from './ui/ProjectCard';
 import type { Translations, ProjectItem } from '../types';
 
 interface ProjectsSectionProps {
@@ -42,7 +42,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project, index) => (
-            <ProjectCard3D
+            <ProjectCard
               key={index}
               project={project}
               translations={translations}
