@@ -98,7 +98,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                     <div className="space-y-3 mb-6 relative z-10">
                       <div className="flex items-center text-gray-500 dark:text-gray-400 nord:text-nord-text/60 tokyo-night:text-tokyo-text/60 dracula:text-dracula-text/60 catppuccin:text-catppuccin-text/60">
                         <Calendar size={18} className="mr-3 text-blue-600 nord:text-nord-accent tokyo-night:text-tokyo-accent dracula:text-dracula-accent catppuccin:text-catppuccin-accent" />
-                        <span className="font-medium">{exp.period}</span>
+                        <span className="font-medium">{exp.period[language]}</span>
                       </div>
                       
                       {exp.location && (

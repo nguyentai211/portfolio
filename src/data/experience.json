@@ -5,7 +5,11 @@
       "en": "Backend Developer",
       "vi": "Lập Trình Viên Backend"
     },
-    "period": "Sep 2024 – Feb 2025",
+    "period":{
+      "en": "Sep 2024 – Feb 2025",
+      "vi": "Tháng 09/2024 – Tháng 02/2025"
+    },
+    
     "description": {
       "en": "Developed and optimized backend systems for transaction management and data integration.",
       "vi": "Phát triển và tối ưu hóa hệ thống backend cho quản lý giao dịch và tích hợp dữ liệu."
@@ -36,7 +40,10 @@
       "en": "Software Deployment",
       "vi": "Triển Khai Phần Mềm"
     },
-    "period": "Apr 2025 – Jul 2025",
+    "period":{
+      "en": "Apr 2025 – Jul 2025",
+      "vi": "Tháng 04/2025 – Tháng 07/2025"
+    } ,
     "location": {
       "en": "General Hospital of Viet Yen (Bac Giang) & Ba Be District Health Center",
       "vi": "Bệnh viện Đa khoa Việt Yên (Bắc Giang) & Trung tâm Y tế huyện Ba Bể"
