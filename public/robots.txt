@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://tainguyen-profile.is-a.dev/sitemap.xml
+Sitemap: https://tainguyen.is-a.dev/sitemap.xml
 
 # Crawl delay for better server performance
 Crawl-delay: 1
