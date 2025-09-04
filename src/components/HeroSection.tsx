@@ -20,11 +20,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-32 relative overflow-hidden">
       <PowerAwareContainer
         fallback={<div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20" />}
       >
-        <ParticleBackground particleCount={30} />
+        <ParticleBackground particleCount={15} />
         <AuroraBackground intensity="light" />
       </PowerAwareContainer>
 
@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="mb-12 animate-fadeInUp">
           <ParallaxContainer intensity={0.15} className="relative mb-8">
-            <AnimatedAvatar size="xl" className="mx-auto mb-8" />
+            <AnimatedAvatar size="lg" className="mx-auto mb-8" />
             <div className="absolute -top-2 -right-2 animate-float">
               <Sparkles className="text-yellow-500" size={24} />
             </div>

@@ -390,44 +390,6 @@ input:hover, textarea:hover {
 /* Mobile optimizations */
 /* Responsive optimizations */
 @media (max-width: 768px) {
-  /* Optimize animations for mobile performance */
-  * {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  /* Reduce animation complexity on mobile */
-  .card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .card-hover:hover {
-    transform: translate3d(0, -4px, 0) scale3d(1.01, 1.01, 1);
-  }
-  
-  .btn-enhanced {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .btn-enhanced:hover {
-    transform: translate3d(0, -1px, 0);
-  }
-  
-  /* Reduce animations on mobile for better performance */
-  .animate-float {
-    animation-duration: 4s;
-  }
-  
-  /* Optimize backdrop blur for mobile */
-  .backdrop-blur-xl {
-    backdrop-filter: blur(8px);
-  }
-  
-  /* Improve mobile menu performance */
-  .mobile-menu-overlay {
-    backdrop-filter: blur(3px);
-  }
-
   /* Improve touch targets */
   button, a {
     min-height: 44px;
@@ -438,65 +400,6 @@ input:hover, textarea:hover {
   input, textarea, select {
     font-size: 16px;
   }
-  
-  /* Optimize mobile navigation */
-  .nav-enhanced {
-    backdrop-filter: blur(10px);
-  }
-  
-  /* Reduce particle count on mobile */
-  .particle-background {
-    display: none;
-  }
-  
-  /* Disable 3D effects on mobile for performance */
-  .preserve-3d {
-    transform-style: flat;
-  }
-  
-  .backface-hidden {
-    backface-visibility: visible;
-  }
-  
-  /* Simplify aurora on mobile */
-  .animate-aurora-1,
-  .animate-aurora-2,
-  .animate-aurora-3 {
-    animation: none;
-  }
-}
-
-/* Mobile device specific optimizations */
-.mobile-device .animate-float,
-.mobile-device .animate-pulse-slow {
-  animation-duration: 2s;
-}
-
-.mobile-device .card-hover::before,
-.mobile-device .btn-enhanced::before {
-  display: none;
-}
-
-/* Low power mode optimizations */
-.low-power-mode .animate-float,
-.low-power-mode .animate-pulse-slow,
-.low-power-mode .animate-idle-wobble,
-.low-power-mode .animate-aurora-1,
-.low-power-mode .animate-aurora-2,
-.low-power-mode .animate-aurora-3 {
-  animation: none !important;
-}
-
-.low-power-mode .particle-background,
-.low-power-mode .aurora-background {
-  display: none !important;
-}
-
-/* Reduced motion optimizations */
-.reduce-motion * {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
 }
 
 /* Accessibility improvements */
